@@ -439,7 +439,11 @@ Connection.prototype.getUrl = function(url, oauth, callback) {
 // chatter api methods
 
 Connection.prototype.updateStatus = function(status, oauth, callback) {
-  
+  if(typeof status !== 'string') {
+    return callback(new Error('Status must be in string form'), null);
+  }
+  if(!validateOAuth(oauth)) callback(new Error('Invalid oauth object argument'), null);
+  var uri = 
 }
 
 // express middleware

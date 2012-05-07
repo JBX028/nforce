@@ -443,7 +443,17 @@ Connection.prototype.updateStatus = function(status, oauth, callback) {
     return callback(new Error('Status must be in string form'), null);
   }
   if(!validateOAuth(oauth)) callback(new Error('Invalid oauth object argument'), null);
-  var uri = 
+  var uri = oauth.instance_url + '/services/data/' + this.apiVersion + '/chatter/feeds/news/me/feed-items';
+  var bodyOpts = {
+    body: {
+      messageSegments: {
+        type: 'Text',
+        text: status
+      }
+    }
+  }
+  var opts = { uri: uri, method: 'POST', body: JSON.stringify(bodyOpts) }
+  apiRequest(opts, oauth, callback);
 }
 
 // express middleware

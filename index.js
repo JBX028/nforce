@@ -446,10 +446,7 @@ Connection.prototype.updateStatus = function(status, oauth, callback) {
   var uri = oauth.instance_url + '/services/data/' + this.apiVersion + '/chatter/feeds/news/me/feed-items';
   var bodyOpts = {
     body: {
-      messageSegments: {
-        type: 'Text',
-        text: status
-      }
+      messageSegments: [{ type: 'Text', text: status }]
     }
   }
   var opts = { uri: uri, method: 'POST', body: JSON.stringify(bodyOpts) }

@@ -438,6 +438,10 @@ Connection.prototype.getUrl = function(url, oauth, callback) {
 
 // chatter api methods
 
+Connection.prototype.updateStatus = function(status, oauth, callback) {
+  
+}
+
 // express middleware
 
 Connection.prototype.expressOAuth = function(opts) {
